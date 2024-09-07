@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    text-align:center;
+}
+
+.image-thumb {
+    height: 300px;
+    border-radius: 10px;
+    filter: contrast(30%) invert(100%);
+}
+
+.image-thumb:hover {
+    filter: none;
+}
+
+.image-text {
+    display: none;
+}
+
+.image-container {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: 10px;
+}
+
+.image-container:hover .image-text {
+    display: block;
+}
