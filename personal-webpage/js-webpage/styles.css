@@ -3,27 +3,60 @@ body {
     text-align:center;
 }
 
+.container {
+    display: flex;
+}
+#banner {
+    width: 100%;
+}
+
+#side-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+#main-content {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: left;
+}
+
 .image-thumb {
     height: 300px;
     border-radius: 10px;
     filter: contrast(30%) invert(100%);
 }
 
-.image-thumb:hover {
-    filter: none;
-}
-
 .image-text {
-    display: none;
+    opacity: 0;
+    position: relative;
+    transition: opacity 0.3s ease;
+    margin: 5px;
 }
 
 .image-container {
     display: inline-block;
     position: relative;
-    text-align: center;
+    text-align: left;
     margin: 10px;
+    width: 300px;
 }
 
 .image-container:hover .image-text {
-    display: block;
+    opacity: 1;
+}
+
+.image-container:hover .image-thumb {
+    filter: none;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
 }
