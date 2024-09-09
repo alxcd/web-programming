@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContent = document.getElementById('main-content');
 
     function moveSideHeader() {
-        if (window.innerWidth <= 600) {
+        if (window.innerWidth <= 800) {
             // Move side-header outside of container
             document.body.insertBefore(sideHeader, container);
         } else {

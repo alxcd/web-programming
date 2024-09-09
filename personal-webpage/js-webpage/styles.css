@@ -21,7 +21,7 @@ body {
     background-color: #e6e7ed;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     #side-header {
         flex-direction: row;
         justify-content:space-evenly
