@@ -43,11 +43,10 @@ a.active {
     outline: 2px solid black; /* Outline for active link */
 }
 
-
 .image-thumb {
-    height: 250px;
+    height: 280px;
     border-radius: 10px;
-    filter: contrast(30%) invert(100%);
+    filter: saturate(30%);
 }
 
 .image-title {
@@ -69,7 +68,7 @@ a.active {
     position: relative;
     text-align: left;
     margin: 10px;
-    width: 300px;
+    width: 350px;
     align-items: center;
 }
 
