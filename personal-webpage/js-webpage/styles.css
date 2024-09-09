@@ -8,6 +8,8 @@ body {
 }
 #banner {
     width: 100%;
+    height: 320px;
+    object-fit:cover;
 }
 
 #side-header {
@@ -16,7 +18,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #e6e7ed;
 }
 
 #main-content {
@@ -25,25 +27,38 @@ body {
     text-align: left;
 }
 
+a.active {
+    outline: 2px solid black; /* Outline for active link */
+}
+
+
 .image-thumb {
-    height: 300px;
+    height: 250px;
     border-radius: 10px;
     filter: contrast(30%) invert(100%);
 }
 
+.image-title {
+    margin: 0px;
+    position: relative;
+    text-align: center;
+}
 .image-text {
     opacity: 0;
     position: relative;
     transition: opacity 0.3s ease;
     margin: 5px;
+    text-align: left;
 }
 
 .image-container {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     position: relative;
     text-align: left;
     margin: 10px;
     width: 300px;
+    align-items: center;
 }
 
 .image-container:hover .image-text {
