@@ -1,4 +1,5 @@
 import Maze from "./components/Maze"
+import Minesweeper from "./components/Minesweeper"
 import Piano from "./components/Piano"
 
 const App = () => {
@@ -8,8 +9,17 @@ const App = () => {
   
   <div>
   <h1>My projects</h1>
-    <Maze />
-    <Piano />
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+      alignItems: 'flex-start',
+      }
+      }>
+      <Maze />
+      <Minesweeper />
+    </div>
+    <Piano/>
   </div>
   )
 }
