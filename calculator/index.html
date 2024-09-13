@@ -9,19 +9,24 @@
   <body>
     <p>Calculator exercise</p>
     <form id="calculatorForm">
-      <div class="row">
-        <input id="num_a_input"/>
-        <input id="num_b_input"/>
+      <div class="column">
+        <div class="row">
+          <input id="num_a_input"/>
+          <input id="num_b_input"/>
+        </div>
+        <br />
+        <div class="row">
+          <button type="button" onclick="setResult('add')">+</button>
+          <button type="button" onclick="setResult('subtract')">-</button>
+          <button type="button" onclick="setResult('multiply')">*</button>
+          <button type="button" onclick="setResult('divide')">/</button>
+          <button type="button" onclick="setResult('hypotenuse')">hyp</button>
+        </div>
+        <br />
       </div>
-      <br />
-      <div class="row">
-        <button type="button" onclick="setResult('add')">+</button>
-        <button type="button" onclick="setResult('subtract')">-</button>
-        <button type="button" onclick="setResult('multiply')">*</button>
-        <button type="button" onclick="setResult('divide')">/</button>
-        <button type="button" onclick="setResult('hypotenuse')">hyp</button>
+      <div class="column">
+        <canvas id="resultCanvas"></canvas>
       </div>
-      <br />
     </form>
     <button type="button" onclick="clearOutput()">clearOutput</button>
     <div id="result_div" />  

@@ -2,7 +2,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   outline: auto;
   margin-bottom: 5px;
 }
@@ -11,6 +11,13 @@
   display: flex;
   margin: 5px;
   max-width: 260px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  flex: 1;
 }
 
 #calculatorForm input {
@@ -30,4 +37,8 @@
 
 #calculatorForm br + * {
   margin-top: 10px;
+}
+
+.canvas {
+  flex-shrink: 1;
 }

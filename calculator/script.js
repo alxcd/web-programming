@@ -7,13 +7,36 @@ function getInputValues() {
 }
 
 function clearOutput() {
-  document.getElementById('result_div').innerText = ''
+  document.getElementById('result_div').innerText = '';
+  const canvas = document.getElementById('resultCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function drawRightTriangle(ctx, a, b) {
+  const canvas = document.getElementById('resultCanvas');
+  const scaleX = canvas.width / a;
+  const scaleY = canvas.height / b;
+  const scale = Math.min(scaleX, scaleY);
+
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height);
+  ctx.lineTo(a * scale, canvas.height);
+  ctx.lineTo(0, canvas.height - b * scale);
+  ctx.closePath();
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 3;
+  ctx.stroke();
 }
 
 function setResult(operation) {
   const { numA, numB } = getInputValues();
   let result;
   let error = false;
+  const canvas = document.getElementById('resultCanvas');
+  const ctx = canvas.getContext('2d');
   switch (operation) {
     case 'add':
       result = `${numA} + ${numB} = ${numA + numB}`;
@@ -34,6 +57,7 @@ function setResult(operation) {
       break;
     case 'hypotenuse':
       result = `Hypotenuse = ${Math.hypot(numA, numB)}`;
+      drawRightTriangle(ctx, numA, numB)
       break;
     default:
       result = 'Invalid operation';
