@@ -1,0 +1,33 @@
+#calculatorForm {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  outline: auto;
+  margin-bottom: 5px;
+}
+
+.row {
+  display: flex;
+  margin: 5px;
+  max-width: 260px;
+}
+
+#calculatorForm input {
+  flex-grow: 1;
+  font-size: 30px;
+  flex-shrink: 1;
+  min-width: 10px;
+  max-width: 160px;
+}
+
+#calculatorForm button {
+  flex-shrink: 1;
+  font-size: 14px;
+  font-weight: bolder;
+  margin: 0 2px;
+}
+
+#calculatorForm br + * {
+  margin-top: 10px;
+}
