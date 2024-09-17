@@ -4,6 +4,7 @@
     <title>JavaScript Calculator Exercise</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <script type="module" crossorigin src="/assets/index-DC1bn7Wj.js"></script>
   </head>
 
   <body>
@@ -23,13 +24,17 @@
           <button type="button" onclick="setResult('hypotenuse')">hyp</button>
         </div>
         <br />
+        <div class="row">
+          <div id="root"></div>
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        </div>
       </div>
       <div class="column">
         <canvas id="resultCanvas"></canvas>
       </div>
     </form>
     <button type="button" onclick="clearOutput()">clearOutput</button>
-    <div id="result_div" />  
+    <div id="result_div" />
   </body>
 
 </html>
