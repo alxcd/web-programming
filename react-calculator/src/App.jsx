@@ -7,7 +7,6 @@ function App() {
 
   const handleInput = (event) => {
     const calcString = event.target.value
-    console.log(calcString)
     setCalcString(calcString)
     const result = evaluate(calcString)
     if (typeof result !== 'object') { setCalcResult(result)}
