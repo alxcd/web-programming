@@ -20,6 +20,15 @@
   flex: 1;
 }
 
+@media (max-width: 800px) {
+  #calculatorForm {
+    flex-wrap: wrap;
+  }
+  .row {
+    flex-wrap: wrap;
+  }
+}
+
 #calculatorForm input {
   flex-grow: 1;
   font-size: 30px;
@@ -41,4 +50,5 @@
 
 .canvas {
   flex-shrink: 1;
+  flex-basis: 100%;
 }
