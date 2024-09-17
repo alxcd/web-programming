@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { evaluate } from 'mathjs'
+import './App.css'
 
 function App() {
   const [calcResult, setCalcResult] = useState('')
@@ -21,7 +22,7 @@ function App() {
   return (
     <>
       <div>
-      <input onChange={handleInput}></input>
+      <textarea onChange={handleInput}></textarea>
       </div>
       <br/>
       {calcResult ? (
