@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+}
+#visualizer {
+  height: 200px;
+}
+.bar {
+  background-color: black;
+  width: 10px;
+  height: 100%;
+  margin: 1px;
+  display: inline-block;
+}

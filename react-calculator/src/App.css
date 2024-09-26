@@ -10,4 +10,5 @@ textarea {
 .result {
   font-size: 26px;
   margin-top: 10px;
+  word-wrap: break-word;
 }
