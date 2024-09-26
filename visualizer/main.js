@@ -1,23 +1,18 @@
 const visualizer = document.getElementById('visualizer');
 
 function visualizeSorting(method) {
-  const array = generateRandomArray(30);
-  generateBars(array, visualizer);
-  const swaps = sortingMethod(method, array);
-  animate(swaps);  
-}
-
-function sortingMethod(method, array) {
-  switch (method) {
-    case 'bubbleSort':
-      return bubbleSort([...array]);
-    default:
-      return null;
-  }
+  stopAnimation = true;
+  setTimeout(() => {
+    stopAnimation = false;
+    const array = generateRandomArray(30);
+    generateBars(array, visualizer);
+    const swaps = sortingMethod(method, array);
+    animate(swaps);    
+  }, 100)
 }
 
 function animate(swaps) {
-   if (swaps.length == 0) {
+   if (swaps.length == 0 || stopAnimation) {
       return;
    }
    const indices = swaps.shift();
@@ -35,6 +30,7 @@ function swapChildren([left, right], children) {
 }
 
 function generateBars(array, container) {
+  container.innerHTML = '';
   for (let i = 0; i < array.length; i++) {
      const bar = document.createElement("div");
      bar.classList.add("bar");

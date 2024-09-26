@@ -1,3 +1,12 @@
+function sortingMethod(method, array) {
+   switch (method) {
+     case 'bubbleSort':
+       return bubbleSort([...array]);
+     default:
+       return null;
+   }
+ } 
+
 function bubbleSort(array) {
   const swaps = [];
   let somethingChanged;
