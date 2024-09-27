@@ -4,14 +4,29 @@
     <title>Alex's sorting visualizer</title>
     <link rel="stylesheet" href="styles.css">
     <script src="sorting.js"></script>
+    <script src="sound.js"></script>
+    <script src="copilot_sorts.js"></script>
   </head>
   <body>
     <h1>Sorting Visualizer</h1>
+    <button type="button" onclick="alterTimeout(10)">Speed +</button>
+    <button type="button" onclick="alterTimeout(-10)">Speed -</button>
+    <button type="button" onclick="alterSize(1)">Size +</button>
+    <button type="button" onclick="alterSize(-1)">Size -</button>
+    <button type="button" onclick="alterSize(10)">Size +10</button>
+    <br/>
     <button type="button" onclick="visualizeSorting('bubbleSort')">Bubble</button>
     <button type="button" onclick="visualizeSorting('insertionSort')">Insertion</button>
     <button type="button" onclick="visualizeSorting('quickSort')">Quick</button>
-    <button type="button" onclick="alterTimeout(10)">Speed +</button>
-    <button type="button" onclick="alterTimeout(-10)">Speed -</button>
+    <button type="button" onclick="visualizeSorting('selectionSort')">Selection</button>
+    <button type="button" onclick="visualizeSorting('mergeSort')">Merge</button>
+    <button type="button" onclick="visualizeSorting('heapSort')">Heap</button>
+    <button type="button" onclick="visualizeSorting('combSort')">comb</button>
+    <button type="button" onclick="visualizeSorting('shellSort')">Shell</button>
+    <button type="button" onclick="visualizeSorting('countingSort')">Counting</button>
+    <button type="button" onclick="visualizeSorting('bucketSort')">Bucket</button>
+    <button type="button" onclick="visualizeSorting('cocktailSort')">Cocktail</button>
+    <button type="button" onclick="visualizeSorting('gnomeSort')">Gnome</button>
     <div id="visualizer"></div>
     <script src="main.js"></script>
   </body>

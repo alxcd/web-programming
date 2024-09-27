@@ -1,15 +1,5 @@
 function sortingMethod(method, array) {
-   switch (method) {
-      case 'bubbleSort':
-        return bubbleSort([...array]);
-      case 'insertionSort':
-        return insertionSort([...array]);
-      case 'quickSort':
-        return quickSort([...array]);
-      default:
-        console.error('Unknown sorting method:', method);
-        return null;
-   }
+  return eval(`${method}([...array])`);
  } 
 
 function bubbleSort(array) {

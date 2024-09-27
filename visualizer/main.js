@@ -1,9 +1,16 @@
 const visualizer = document.getElementById('visualizer');
 let timeout = 100;
+let size = 30;
 
 function alterTimeout(value) {
-   timeout = timeout - value;
+   timeout = timeout > 1 ? timeout - value : 1;
    console.log('timeout: ', timeout);
+}
+
+
+function alterSize(value) {
+  size = size + value;
+  console.log('size: ', size);
 }
 
 function visualizeSorting(method) {
@@ -11,7 +18,7 @@ function visualizeSorting(method) {
   stopAnimation = true;
   setTimeout(() => {
     stopAnimation = false;
-    const array = generateRandomArray(30);
+    const array = generateRandomArray(size);
     console.log('Generated array:', array);
     generateBars(array, visualizer);
     const swaps = sortingMethod(method, array);
@@ -26,6 +33,10 @@ function animate(swaps) {
    }
    const indices = swaps.shift();
    swapChildren(indices, visualizer.children);
+
+   const keyScale = 61 / size;
+   playSound(65 * Math.pow(2, keyScale * indices[0] / 12));
+   playSound(65 * Math.pow(2, keyScale * indices[1] / 12));
 
    setTimeout(function () {
       animate(swaps);
@@ -55,8 +66,6 @@ function generateBars(array, container) {
 }
 
 function getColor(value) {
-   const blue = Math.floor(255 * (1 - value));
-   const red = Math.floor(255 * value);
    const hue = (1 - value) * 270;
    return `hsl(${hue}, 100%, 50%)`;
 }
