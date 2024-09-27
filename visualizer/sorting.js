@@ -1,9 +1,12 @@
 function sortingMethod(method, array) {
    switch (method) {
-     case 'bubbleSort':
-       return bubbleSort([...array]);
-     default:
-       return null;
+      case 'bubbleSort':
+        return bubbleSort([...array]);
+      case 'insertionSort':
+        return insertionSort([...array]);
+      default:
+        console.error('Unknown sorting method:', method);
+        return null;
    }
  } 
 
@@ -22,6 +25,21 @@ function bubbleSort(array) {
   } while (somethingChanged);
   return swaps;
 }
+
+function insertionSort(array) {
+  const swaps = [];
+  for (let i = 1; i < array.length; i++) {
+    for (let j = i; j > 0; j--) {
+      if (array[j - 1] > array[j]) {
+          [array[j - 1], array[j]] = [array[j], array[j - 1]];
+          swaps.push([j - 1, j]);
+      }
+      else break;
+    }
+  }
+  return swaps;
+}
+
 
 function generateRandomArray(size) {
   const array = new Array(size);

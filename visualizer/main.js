@@ -1,18 +1,27 @@
 const visualizer = document.getElementById('visualizer');
+let timeout = 100;
+
+function alterTimeout(value) {
+   timeout = timeout - value;
+   console.log('timeout: ', timeout);
+}
 
 function visualizeSorting(method) {
+  console.log(`starting ${method}`)
   stopAnimation = true;
   setTimeout(() => {
     stopAnimation = false;
     const array = generateRandomArray(30);
+    console.log('Generated array:', array);
     generateBars(array, visualizer);
     const swaps = sortingMethod(method, array);
-    animate(swaps);    
-  }, 100)
+    console.log('Generated swaps:', swaps);
+    animate(swaps);
+  }, timeout);
 }
 
 function animate(swaps) {
-   if (swaps.length == 0 || stopAnimation) {
+   if (swaps == null || swaps.length == 0 || stopAnimation) {
       return;
    }
    const indices = swaps.shift();
@@ -20,7 +29,7 @@ function animate(swaps) {
   
    setTimeout(function () {
       animate(swaps);
-   }, 100);
+   }, timeout);
 }
 
 function swapChildren([left, right], children) {
@@ -35,6 +44,14 @@ function generateBars(array, container) {
      const bar = document.createElement("div");
      bar.classList.add("bar");
      bar.style.height = array[i] * 100 + "%";
+     bar.style.backgroundColor = getColor(array[i]);
      container.appendChild(bar);
   }
+}
+
+function getColor(value) {
+   const blue = Math.floor(255 * (1 - value));
+   const red = Math.floor(255 * value);
+   const hue = (1 - value) * 270;
+   return `hsl(${hue}, 100%, 50%)`;
 }
