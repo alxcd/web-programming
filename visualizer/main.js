@@ -26,16 +26,21 @@ function animate(swaps) {
    }
    const indices = swaps.shift();
    swapChildren(indices, visualizer.children);
-  
+
    setTimeout(function () {
       animate(swaps);
    }, timeout);
 }
 
 function swapChildren([left, right], children) {
-   const barLeft = children[left];
-   const barRight = children[right];
-   visualizer.insertBefore(barRight, barLeft);
+  
+  const barLeft = children[left];
+  const barLeftClone = barLeft.cloneNode(true);
+  const barRight = children[right];
+  const barRightClone = barRight.cloneNode(true);
+
+  barRight.parentNode.replaceChild(barLeftClone, barRight);
+  barLeft.parentNode.replaceChild(barRightClone, barLeft);
 }
 
 function generateBars(array, container) {

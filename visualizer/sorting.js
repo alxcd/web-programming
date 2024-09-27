@@ -4,6 +4,8 @@ function sortingMethod(method, array) {
         return bubbleSort([...array]);
       case 'insertionSort':
         return insertionSort([...array]);
+      case 'quickSort':
+        return quickSort([...array]);
       default:
         console.error('Unknown sorting method:', method);
         return null;
@@ -40,6 +42,39 @@ function insertionSort(array) {
   return swaps;
 }
 
+function quickSort(array) {
+  const swaps = [];
+
+  function recursion(start, end) {
+    if (end - start <= 1) return;
+
+    let pivotIndex = Math.floor((start + end) / 2);
+    const pivot = array[pivotIndex];
+
+    let left = start;
+    let right = end - 1;
+
+    while (left <= right) {
+      while (array[left] < pivot) left++;
+      while (array[right] > pivot) right--;
+
+      if (left <= right) {
+        if (left != right) {
+          swaps.push([left, right]);
+          [array[left], array[right]] = [array[right], array[left]];
+        }
+        left++;
+        right--;
+      }
+    }
+
+    recursion(start, right + 1);
+    recursion(left, end);
+  }
+
+  recursion(0, array.length);
+  return swaps;
+}
 
 function generateRandomArray(size) {
   const array = new Array(size);
