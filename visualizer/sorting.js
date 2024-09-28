@@ -1,7 +1,3 @@
-function sortingMethod(method, array) {
-  return eval(`${method}([...array])`);
- } 
-
 function bubbleSort(array) {
   const swaps = [];
   let somethingChanged;

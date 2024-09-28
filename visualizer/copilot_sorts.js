@@ -15,42 +15,6 @@ function selectionSort(array) { // asked copilot for the whole method
   return swaps;
 }
 
-
-function mergeSort(array) {
-  const swaps = [];
-  function merge(left, right) {
-    let result = [];
-    let i = 0, j = 0;
-    while (i < left.length && j < right.length) {
-      if (left[i] < right[j]) {
-        result.push(left[i++]);
-      } else {
-        result.push(right[j++]);
-      }
-    }
-    return result.concat(left.slice(i)).concat(right.slice(j));
-  }
-
-  function mergeSortHelper(arr) {
-    if (arr.length < 2) {
-      return arr;
-    }
-    const mid = Math.floor(arr.length / 2);
-    const left = mergeSortHelper(arr.slice(0, mid));
-    const right = mergeSortHelper(arr.slice(mid));
-    return merge(left, right);
-  }
-
-  const sortedArray = mergeSortHelper(array);
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] !== sortedArray[i]) {
-      swaps.push([i, sortedArray.indexOf(array[i])]);
-      [array[i], array[sortedArray.indexOf(array[i])]] = [array[sortedArray.indexOf(array[i])], array[i]];
-    }
-  }
-  return swaps;
-}
-
 function heapSort(array) {
   const swaps = [];
   function heapify(arr, n, i) {
@@ -104,56 +68,6 @@ function shellSort(array) {
   return swaps;
 }
 
-function countingSortByDigit(array, exp, swaps) {
-  const output = new Array(array.length).fill(0);
-  const count = new Array(10).fill(0);
-
-  for (let i = 0; i < array.length; i++) {
-    const digit = Math.floor(array[i] / exp) % 10;
-    count[digit]++;
-  }
-
-  for (let i = 1; i < 10; i++) {
-    count[i] += count[i - 1];
-  }
-
-  for (let i = array.length - 1; i >= 0; i--) {
-    const digit = Math.floor(array[i] / exp) % 10;
-    output[count[digit] - 1] = array[i];
-    swaps.push([i, count[digit] - 1]);
-    count[digit]--;
-  }
-
-  for (let i = 0; i < array.length; i++) {
-    array[i] = output[i];
-  }
-}
-
-function bucketSort(array) {
-  const swaps = [];
-  const bucketCount = Math.floor(Math.sqrt(array.length));
-  const buckets = Array.from({ length: bucketCount }, () => []);
-
-  const max = Math.max(...array);
-  for (let i = 0; i < array.length; i++) {
-    const bucketIndex = Math.floor((array[i] / max) * (bucketCount - 1));
-    buckets[bucketIndex].push(array[i]);
-  }
-
-  for (let i = 0; i < buckets.length; i++) {
-    insertionSort(buckets[i]);
-  }
-
-  let index = 0;
-  for (let i = 0; i < buckets.length; i++) {
-    for (let j = 0; j < buckets[i].length; j++) {
-      array[index++] = buckets[i][j];
-    }
-  }
-
-  return swaps;
-}
-
 function combSort(array) {
   const swaps = [];
   let gap = array.length;
@@ -173,23 +87,6 @@ function combSort(array) {
         swaps.push([i, i + gap]);
         sorted = false;
       }
-    }
-  }
-
-  return swaps;
-}
-
-function gnomeSort(array) {
-  const swaps = [];
-  let index = 0;
-
-  while (index < array.length) {
-    if (index === 0 || array[index] >= array[index - 1]) {
-      index++;
-    } else {
-      [array[index], array[index - 1]] = [array[index - 1], array[index]];
-      swaps.push([index, index - 1]);
-      index--;
     }
   }
 

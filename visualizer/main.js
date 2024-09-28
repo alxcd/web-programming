@@ -1,6 +1,7 @@
 const visualizer = document.getElementById('visualizer');
 let timeout = 100;
 let size = 30;
+let keyScale = 61 / size;
 
 function alterTimeout(value) {
    timeout = timeout > 1 ? timeout - value : 1;
@@ -16,6 +17,7 @@ function alterSize(value) {
 function visualizeSorting(method) {
   console.log(`starting ${method}`)
   stopAnimation = true;
+  keyScale = 61 / size;
   setTimeout(() => {
     stopAnimation = false;
     const array = generateRandomArray(size);
@@ -27,6 +29,22 @@ function visualizeSorting(method) {
   }, timeout);
 }
 
+function sortingMethod(method, array) {
+  const methods = {
+    bubbleSort,
+    insertionSort,
+    quickSort,
+    selectionSort,
+    heapSort,
+    combSort,
+    shellSort,
+    cocktailSort,
+  }
+
+  return methods[method]([...array]);
+} 
+ 
+
 function animate(swaps) {
    if (swaps == null || swaps.length == 0 || stopAnimation) {
       return;
@@ -34,7 +52,6 @@ function animate(swaps) {
    const indices = swaps.shift();
    swapChildren(indices, visualizer.children);
 
-   const keyScale = 61 / size;
    playSound(65 * Math.pow(2, keyScale * indices[0] / 12));
    playSound(65 * Math.pow(2, keyScale * indices[1] / 12));
 
