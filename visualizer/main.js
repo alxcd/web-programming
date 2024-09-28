@@ -2,6 +2,7 @@ const visualizer = document.getElementById('visualizer');
 let timeout = 100;
 let size = 30;
 let keyScale = 61 / size;
+document.getElementById('methodName').textContent = '';
 
 function alterTimeout(value) {
    timeout = timeout > 1 ? timeout - value : 1;
@@ -15,7 +16,8 @@ function alterSize(value) {
 }
 
 function visualizeSorting(method) {
-  console.log(`starting ${method}`)
+  console.log(`starting ${method}`);
+  document.getElementById('methodName').textContent = method;
   stopAnimation = true;
   keyScale = 61 / size;
   setTimeout(() => {
@@ -61,15 +63,27 @@ function animate(swaps) {
 }
 
 function swapChildren([left, right], children) {
-  
-  const barLeft = children[left];
-  const barLeftClone = barLeft.cloneNode(true);
-  const barRight = children[right];
-  const barRightClone = barRight.cloneNode(true);
+  const border = "2px solid black";
 
+  const barLeft = children[left];
+  const barRight = children[right];
+
+  barLeft.style.border = border; // a bit bad if going back
+  if (Math.abs(left-right) > 1) {
+    barRight.style.border = border;
+  }
+
+  const barLeftClone = barLeft.cloneNode(true);
+  const barRightClone = barRight.cloneNode(true);
   barRight.parentNode.replaceChild(barLeftClone, barRight);
   barLeft.parentNode.replaceChild(barRightClone, barLeft);
+
+  setTimeout(() => {
+    barLeftClone.style.border = "";
+    barRightClone.style.border = "";
+  }, timeout)
 }
+
 
 function generateBars(array, container) {
   container.innerHTML = '';
@@ -86,3 +100,4 @@ function getColor(value) {
    const hue = (1 - value) * 270;
    return `hsl(${hue}, 100%, 50%)`;
 }
+
